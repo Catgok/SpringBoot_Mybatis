@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.elm_mybatis.dao.IBusinessDao">
+    <!-- mapper with the class IBusinessDao-->
+    <select id="queryBusiness" resultType="com.example.elm_mybatis.pojo.Business">
+        #   id is the function name
+        #   write the SQL over here
+        select *
+        from business
+    </select>
+
+    <select id="queryBusinessById" resultType="com.example.elm_mybatis.pojo.Business">
+        select *
+        from business
+        where business_id = #{businessId}
+        #   use #{parameter} to use the function's parameter
+    </select>
+
+    <insert id="insertBusiness" keyProperty="businessId" keyColumn="business_id"
+            parameterType="com.example.elm_mybatis.pojo.Business">
+        #   keyProperty: class attribute keyColumn: table column
+        insert into business(business_id, business_address, business_explain, business_img, business_name,
+                             delivery_price, order_type_id, remarks, star_price)
+        values (#{businessId}, #{businessAddress}, #{businessExplain}, #{businessImg}, #{businessName},
+                #{deliveryPrice}, #{orderTypeId}, #{remarks}, #{startPrice})
+    </insert>
+
+    <update id="updateBusiness" keyProperty="businessId" keyColumn="business_id"
+            parameterType="com.example.elm_mybatis.pojo.Business">
+        #   write the SQL over here
+        update business
+        set business_id=#{businessId}
+        #             where business_
+        #             business(business_id, business_address, business_explain, business_img, business_name,
+#                              delivery_price, order_type_id, remarks, star_price)
+#         values (#{businessId}, #{businessAddress}, #{businessExplain}, #{businessImg}, #{businessName},
+#                 #{deliveryPrice}, #{orderTypeId}, #{remarks}, #{startPrice})
+    </update>
+</mapper>
